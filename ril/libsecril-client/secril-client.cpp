@@ -1126,6 +1126,9 @@ static int SendOemRequestHookRaw(HRilClient client, int req_id, char *data, size
         goto error;
     }
 
+    FreeToken(&(client_prv->token_pool), token);
+    ClearReqHistory(client_prv, token);
+
     return RIL_CLIENT_ERR_SUCCESS;
 
 error:
